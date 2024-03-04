@@ -1,0 +1,105 @@
+openapi: "3.0.0"
+info:
+  title: Composer API
+  description: Use this API to list all composers, search for individual composers, or create new composers.
+  version: "1.0"
+paths:
+  /composers:
+    description: The directory of composers
+    get: 
+      summary: Returns a list of all composers
+      tags:
+        - Composers
+      operationId: findAllComposers
+      responses:
+        "200":
+          description: An array of all composer documents
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: string
+                    composer:
+                      type: object
+                      properties:
+                        firstName:
+                          type: string
+                        lastName:
+                          type: string
+        "500":
+          description: Server Exceptions / Internal Server Error
+        "501":
+          description: MongoDB Exceptions
+    post:
+      summary: Create a new composer
+      tags:
+        - Composers
+      operationId: createComposer 
+      requestBody:
+        description: Create a new composer document
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+        required: true
+      responses:
+        "200":
+          description: New composer created
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  firstName:
+                    type: string
+                  lastName:
+                    type: string
+        "500":
+          description: Server Exceptions / Internal Server Error
+        "501":
+          description: MongoDB Exceptions
+  /composers/{id}:
+    description: The directory of composers
+    get: 
+      summary: Returns a single composers
+      tags:
+        - Composers
+      operationId: findComposerById
+      parameters:
+        - name: id
+          in: path
+          description: ID of a composer
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: An object for a single composer documents
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  id:
+                    type: string
+                  composer:
+                    type: object
+                    properties:
+                      firstName:
+                        type: string
+                      lastName:
+                        type: string
+        "500":
+          description: Server Exceptions / Internal Server Error
+        "501":
+          description: MongoDB Exceptions
+        
+                        
