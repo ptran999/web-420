@@ -14,6 +14,7 @@ const composersAPI = require('./routes/tran-composer-routes');
 const personsAPI = require('./routes/tran-person-routes')
 const usersAPI = require('./routes/tran-session-routes');
 const customerAPI = require('./routes/tran-node-shopper-routes');
+const teamsAPI = require('./routes/tran-teams-routes');
 
 // Variable to express library.
 const app = express();
