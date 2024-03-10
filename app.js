@@ -61,6 +61,10 @@ app.use('/api', personsAPI);
 app.use('/api', usersAPI);
 app.use('/api', customerAPI);
 
+// additional route for render
+app.get("*", (req, res) => {
+	res.redirect("tran-web-420-capstone.onrender.com/");
+});
 //Create server and listen on port 3000.
 http.createServer(app).listen(PORT, () => {
     console.log(`Application started and listening on port ${PORT}.`);
