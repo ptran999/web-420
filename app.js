@@ -62,11 +62,10 @@ app.use('/api', usersAPI);
 app.use('/api', customerAPI);
 
 // additional route for render
-app.get("*", (req, res) => {
-	res.redirect("app.get('/', (req, res) => {
+app.get('/', (req, res) => {
     res.redirect('/api-docs');
-});");
 });
+
 //Create server and listen on port 3000.
 http.createServer(app).listen(PORT, () => {
     console.log(`Application started and listening on port ${PORT}.`);
